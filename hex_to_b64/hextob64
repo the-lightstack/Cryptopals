@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+from bitstring import BitArray
+from string import ascii_lowercase,ascii_uppercase,digits
+import sys
+
+character_range = ascii_uppercase+ascii_lowercase+digits+"+/"
+data = BitArray(sys.argv[1])
+
+split_data = []
+for i in range(0,len(data),6):
+	split_data.append(data[i:i+6])
+# Outputs many 6-bit BitArrays
+str_data=""
+for i in split_data:
+	str_data += character_range[i.uint]
+
+print(str_data)
